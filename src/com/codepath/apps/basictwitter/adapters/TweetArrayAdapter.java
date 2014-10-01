@@ -1,7 +1,11 @@
-package com.codepath.apps.basictwitter;
+package com.codepath.apps.basictwitter.adapters;
 
 import java.util.List;
 
+import com.codepath.apps.basictwitter.R;
+import com.codepath.apps.basictwitter.Utils;
+import com.codepath.apps.basictwitter.R.id;
+import com.codepath.apps.basictwitter.R.layout;
 import com.codepath.apps.basictwitter.models.Tweet;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -32,11 +36,16 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		ImageView ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
 		TextView tvUserName = (TextView) v.findViewById(R.id.tvUserName);
 		TextView tvBody = (TextView) v.findViewById(R.id.tvBody);
+		TextView tvTimeStamp = (TextView) v.findViewById(R.id.tvTimeStamp);
+		TextView tvUserId = (TextView) v.findViewById(R.id.tvUserId);
+		
 		ivProfileImage.setImageResource(android.R.color.transparent);
 		ImageLoader loader = ImageLoader.getInstance();
 		loader.displayImage(tweet.getUser().getProfileImageUrl(), ivProfileImage);
-		tvUserName.setText(tweet.getUser().getScreenName());
+		tvUserName.setText(tweet.getUser().getName());
 		tvBody.setText(tweet.getBody());
+		tvTimeStamp.setText(Utils.getRelativeTimeAgo(tweet.getCretedAt()));
+		tvUserId.setText("@" + tweet.getUser().getScreenName());
 		return v;
 		
 	}

@@ -7,7 +7,11 @@
     <string name="title_activity_photos">Flickr Photos</string>
     <string name="login_label">Connect to Twitter</string>
     <string name="title_activity_time_line">TimeLineActivity</string>
-    <string name="default_tweet">Example Tweet</string>
+    <string name="default_tweet">What\'s happening\?</string>
     <string name="default_user">\@foo</string>
+    <string name="default_user_name">Foo Bar</string>
+    <string name="default_time_stamp">8m</string>
+    <string name="btCancel">Cancel</string>
+    <string name="btTweet">Tweet</string>
 
 </resources>

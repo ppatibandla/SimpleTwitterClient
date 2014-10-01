@@ -14,9 +14,9 @@ public class User {
 	public static User fromJson(JSONObject json) {
 		User user = new User();
 		try {
-			user.name = json.getString("name");
+			user.name = json.getString("name").trim();
 			user.uid = json.getLong("id");
-			user.screenName = json.getString("screen_name");
+			user.screenName = json.getString("screen_name").trim();
 			user.profileImageUrl = json.getString("profile_image_url");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
