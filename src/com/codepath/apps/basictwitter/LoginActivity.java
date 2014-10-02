@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.codepath.oauth.OAuthLoginActivity;
 
+
 public class LoginActivity extends OAuthLoginActivity<TwitterClient> {
 
 	@Override
