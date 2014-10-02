@@ -14,4 +14,4 @@ Time Spent : 12hrs
 
 Next step:
 
-![images/SimpleTwietterClient.gif](images/SimpleTwietterClient.gif)
+![images/SimpleTwitterClient.gif](images/SimpleTwitterClient.gif)
