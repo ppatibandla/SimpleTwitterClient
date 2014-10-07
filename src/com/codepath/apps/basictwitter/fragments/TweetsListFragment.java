@@ -21,8 +21,11 @@ import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 public class TweetsListFragment extends Fragment implements
 		TweetArrayAdapter.OnTweetClickListener {
@@ -30,6 +33,7 @@ public class TweetsListFragment extends Fragment implements
 	private TweetArrayAdapter atweets;
 	private ListView lvTweets;
 	private SwipeRefreshLayout swipeContainer;
+	private ProgressBar pbTweetList;
 
 	// Subclass should override these to implement Endless scrolling and refresh
 	public  void onScrollListner() {};
@@ -43,8 +47,6 @@ public class TweetsListFragment extends Fragment implements
 	public void onCreate(Bundle savedInstanceState) {
 		tweets = new ArrayList<Tweet>();
 		atweets = new TweetArrayAdapter(getActivity(), tweets, this);
-
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}
 
@@ -54,14 +56,15 @@ public class TweetsListFragment extends Fragment implements
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_tweets_list, container,
 				false);
+		pbTweetList = (ProgressBar) v.findViewById(R.id.pbTweetList);
 		lvTweets = (ListView) v.findViewById(R.id.lvTweets);
 		lvTweets.setAdapter(atweets);
-
+		
 		lvTweets.setOnScrollListener(new EndlessScrollListener(
 				lvTweetsVisibilityThreshold) {
 			@Override
 			public void onLoadMore(int page, int totalItemsCount) {
-
+				showProgressBar();
 				onScrollListner();
 			}
 
@@ -91,6 +94,9 @@ public class TweetsListFragment extends Fragment implements
 	public void noteRefreshDone() {
 		swipeContainer.setRefreshing(false);
 	}
+	public void noteScrollDone() {
+		hideProgressBar();
+	}
 	public void clear() {
 		atweets.clear();
 	}
@@ -102,7 +108,16 @@ public class TweetsListFragment extends Fragment implements
 	public void insert(Tweet t, int pos) {
 		atweets.insert(t, pos);
 	}
-
+    // Should be called manually when an async task has started
+    public void showProgressBar() {
+    	pbTweetList.setVisibility(ProgressBar.VISIBLE);
+    }
+    
+    // Should be called when an async task has finished
+    public void hideProgressBar() {
+    	pbTweetList.setVisibility(ProgressBar.INVISIBLE);
+    }
+    
 	@Override
 	public void onProfileImageClick(User user) {
 		// TODO Auto-generated method stub

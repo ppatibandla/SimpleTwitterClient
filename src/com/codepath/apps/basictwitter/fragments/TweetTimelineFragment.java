@@ -10,13 +10,11 @@ import android.widget.Toast;
 import com.activeandroid.util.Log;
 import com.codepath.apps.basictwitter.models.Tweet;
 import com.codepath.apps.basictwitter.utils.TwitterClient;
-import com.codepath.apps.basictwitter.utils.TwitterClientApp;
 import com.codepath.apps.basictwitter.utils.Utils;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public abstract class TweetTimelineFragment extends TweetsListFragment {
-	private TwitterClient client;
 	private String minUid;
 	private String maxUid;
 
@@ -41,7 +39,7 @@ public abstract class TweetTimelineFragment extends TweetsListFragment {
 			NetworkUnavailableDialog.show(getActivity());
 			return;
 		}
-
+		
 		String since_id = "";
 		String max_id = "";
 		final boolean refresh = latest ? true : false;
@@ -83,6 +81,8 @@ public abstract class TweetTimelineFragment extends TweetsListFragment {
 				}
 				if (refresh) {
 					noteRefreshDone();
+				} else {
+					noteScrollDone();
 				}
 			}
 		}, since_id, max_id);
