@@ -34,7 +34,6 @@ public class TimeLineActivity extends ActionBarActivity implements
 	private User user = null;
 	private TweetsListFragment fragmentTweetsList;
 	
-	private SwipeRefreshLayout swipeContainer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,31 +42,8 @@ public class TimeLineActivity extends ActionBarActivity implements
 		setupTabs();
 		
 		client = TwitterClientApp.getRestClient();
-
-
 		populateUserInfo();
-
-
-/*		swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
-		swipeContainer.setOnRefreshListener(new OnRefreshListener() {
-			@Override
-			public void onRefresh() {
-				// Toast.makeText(TimeLineActivity.this, "onRefresh", Toast.LENGTH_SHORT).show();
-				// Your code to refresh the list here.
-				// Make sure you call swipeContainer.setRefreshing(false)
-				// once the network request has completed successfully.
-				populateTimeline();
-			}
-		});
-		// Configure the refreshing colors
-		swipeContainer.setColorScheme(android.R.color.holo_blue_bright,
-				android.R.color.holo_green_light,
-				android.R.color.holo_orange_light,
-				android.R.color.holo_red_light);
-*/
-
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -75,7 +51,6 @@ public class TimeLineActivity extends ActionBarActivity implements
 		getMenuInflater().inflate(R.menu.twitter_menu, menu);
 		return true;
 	}
-
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

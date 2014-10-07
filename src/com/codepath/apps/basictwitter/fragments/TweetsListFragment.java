@@ -16,6 +16,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,10 +29,11 @@ public class TweetsListFragment extends Fragment implements
 	private ArrayList<Tweet> tweets;
 	private TweetArrayAdapter atweets;
 	private ListView lvTweets;
+	private SwipeRefreshLayout swipeContainer;
 
 	// Subclass should override these to implement Endless scrolling and refresh
-	public  void onScroll() {};
-	public  void onRefresh() {};
+	public  void onScrollListner() {};
+	public  void onRefreshListner() {};
 
 
 	private final int lvTweetsVisibilityThreshold = 10;
@@ -45,6 +48,7 @@ public class TweetsListFragment extends Fragment implements
 		super.onCreate(savedInstanceState);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,14 +62,35 @@ public class TweetsListFragment extends Fragment implements
 			@Override
 			public void onLoadMore(int page, int totalItemsCount) {
 
-				TweetsListFragment.this.onScroll();
+				onScrollListner();
 			}
 
 		});
+		swipeContainer = (SwipeRefreshLayout) v.findViewById(R.id.swipeContainer);
+		swipeContainer.setOnRefreshListener(new OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				// Toast.makeText(TimeLineActivity.this, "onRefresh", Toast.LENGTH_SHORT).show();
+				// Your code to refresh the list here.
+				// Make sure you call swipeContainer.setRefreshing(false)
+				// once the network request has completed successfully.
+				onRefreshListner();
+			}
+		});
+		
+		// Configure the refreshing colors
+		swipeContainer.setColorScheme(android.R.color.holo_blue_bright,
+				android.R.color.holo_green_light,
+				android.R.color.holo_orange_light,
+				android.R.color.holo_red_light);
+
 
 		return v;
 	}
 
+	public void noteRefreshDone() {
+		swipeContainer.setRefreshing(false);
+	}
 	public void clear() {
 		atweets.clear();
 	}
