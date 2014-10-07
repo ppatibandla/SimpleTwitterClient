@@ -1,4 +1,4 @@
-package com.codepath.apps.basictwitter;
+package com.codepath.apps.basictwitter.utils;
 
 import android.content.Context;
 

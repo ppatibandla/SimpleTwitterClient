@@ -1,8 +1,11 @@
-package com.codepath.apps.basictwitter;
+package com.codepath.apps.basictwitter.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.text.format.DateUtils;
 
 public class Utils {
@@ -37,4 +40,25 @@ public class Utils {
 
 		return relativeTime;
 	}
+	
+	public static Boolean isNetworkAvailable(Context c) {
+	    ConnectivityManager connectivityManager 
+	          = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+	    return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
+	}
+
+	public static Boolean isOnline() {
+	    try {
+	        Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+	        int returnVal = p1.waitFor();
+	        boolean reachable = (returnVal==0);
+	        return reachable;
+	    } catch (Exception e) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+
 }

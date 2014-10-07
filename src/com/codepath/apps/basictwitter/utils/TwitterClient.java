@@ -1,4 +1,4 @@
-package com.codepath.apps.basictwitter;
+package com.codepath.apps.basictwitter.utils;
 
 import org.scribe.builder.api.Api;
 import org.scribe.builder.api.FlickrApi;
@@ -61,7 +61,44 @@ public class TwitterClient extends OAuthBaseClient {
 		
 	}
 	
-	public void getUserInfo(AsyncHttpResponseHandler handler) {
+	public void getMentionsTimeline(AsyncHttpResponseHandler handler, String since_id, String max_id) {
+		String apiUrl = getApiUrl("statuses/mentions_timeline.json"	);
+		if (!(since_id.isEmpty() && max_id.isEmpty())) {
+			RequestParams params = new RequestParams();
+			if (! since_id.isEmpty()) {
+				params.put("since_id", since_id);
+			}
+			if (! max_id.isEmpty()) {
+				params.put("max_id", max_id);
+			}
+			client.get(apiUrl, params, handler);
+		} else {
+			client.get(apiUrl, null, handler);
+		}
+		
+	}
+	
+	public void getUserTimeline(AsyncHttpResponseHandler handler, String uid, String since_id, String max_id) {
+		String apiUrl = getApiUrl("statuses/user_timeline.json"	);
+		if (!(since_id.isEmpty() && max_id.isEmpty() && uid.isEmpty())) {
+			RequestParams params = new RequestParams();
+			if (! since_id.isEmpty()) {
+				params.put("since_id", since_id);
+			}
+			if (! max_id.isEmpty()) {
+				params.put("max_id", max_id);
+			}
+			if (! uid.isEmpty()) {
+				params.put("user_id", uid);
+			}
+			client.get(apiUrl, params, handler);
+		} else {
+			client.get(apiUrl, null, handler);
+		}
+		
+	}
+	
+	public void getMyInfo(AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("account/verify_credentials.json");
 		client.get(apiUrl, null, handler);
 	}
@@ -73,6 +110,7 @@ public class TwitterClient extends OAuthBaseClient {
 		
 		client.post(apiUrl, params, handler);
 	}
+
 	/* 1. Define the endpoint URL with getApiUrl and pass a relative path to the endpoint
 	 * 	  i.e getApiUrl("statuses/home_timeline.json");
 	 * 2. Define the parameters to pass to the request (query or body)

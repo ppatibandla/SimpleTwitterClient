@@ -13,5 +13,6 @@
     <string name="default_time_stamp">8m</string>
     <string name="btCancel">Cancel</string>
     <string name="btTweet">Tweet</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 
 </resources>
