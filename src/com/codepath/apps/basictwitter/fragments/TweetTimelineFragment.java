@@ -58,8 +58,6 @@ public abstract class TweetTimelineFragment extends TweetsListFragment {
 		}
 		
 
-		Toast.makeText(getActivity(), "loadMore2TimeLine requesting tweets : ",
-				Toast.LENGTH_SHORT).show(); 
 		getTimeline(new JsonHttpResponseHandler() {
 			@Override
 			public void onFailure(Throwable e, String s) {
@@ -79,11 +77,6 @@ public abstract class TweetTimelineFragment extends TweetsListFragment {
 			@Override
 			public void onSuccess(JSONArray json) {
 				ArrayList<Tweet> tweets = Tweet.fromJsonArray(json);
-				Toast.makeText(
-						getActivity(),
-						"loadMore2TimeLine responded , tweets : "
-								+ String.valueOf(tweets.size()),
-						Toast.LENGTH_SHORT).show();
 				addAll(tweets);
 				if (tweets.size() > 0) {
 					long min_uid = tweets.get(tweets.size() - 1).getUid() - 1;

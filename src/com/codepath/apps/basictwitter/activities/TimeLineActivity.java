@@ -121,7 +121,6 @@ public class TimeLineActivity extends ActionBarActivity implements
 		    .setTabListener(new SupportFragmentTabListener<MentionsTimeLineFragment>(R.id.flContainer, this,
                         "MentionsTimelineFragment", MentionsTimeLineFragment.class));
 		actionBar.addTab(tab2);
-		Toast.makeText(this, "Created tabs", Toast.LENGTH_SHORT).show();
 	}
 	
 	@Override

@@ -22,8 +22,8 @@ public class NetworkUnavailableDialog extends DialogFragment {
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
 		// 2. Chain together various setter methods to set the dialog characteristics
-		builder.setMessage("Network not connected. Please check your network settings.")
-		       .setTitle("Network is not connected");
+		builder.setMessage("Network Disconnected. Please check network settings.")
+		       .setTitle("Network Disconnected");
 		// Add the buttons
 		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {

@@ -43,8 +43,6 @@ public class SupportFragmentTabListener<T extends Fragment> implements
 			// If it exists, simply attach it in order to show it
 			sft.attach(mFragment);
 		}
-		Toast.makeText(mActivity, "onTabSelected" + mClass.getName(),
-				Toast.LENGTH_SHORT).show();
 	}
 
 	public void onTabUnselected(Tab tab, FragmentTransaction sft) {
