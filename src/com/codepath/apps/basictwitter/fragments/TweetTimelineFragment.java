@@ -48,8 +48,6 @@ public abstract class TweetTimelineFragment extends TweetsListFragment {
 		}
 		
 		if (!Utils.isNetworkAvailable(getActivity())) {
-			Toast.makeText(getActivity(), "Network not available.",
-					Toast.LENGTH_SHORT).show();
 			NetworkUnavailableDialog.show(getActivity());
 			if (refresh) {
 				noteRefreshDone();

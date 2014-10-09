@@ -91,7 +91,6 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		} else {
 			vh.tvRetweet.setVisibility(View.INVISIBLE);		
 		}
-		return v;
-		
+		return v;	
 	}
 }

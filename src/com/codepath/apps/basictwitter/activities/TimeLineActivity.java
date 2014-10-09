@@ -101,7 +101,7 @@ public class TimeLineActivity extends ActionBarActivity implements
 	private void setupTabs() {
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.setDisplayShowTitleEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
 
 		Tab tab1 = actionBar
 		    .newTab()

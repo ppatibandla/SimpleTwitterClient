@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.codepath.apps.basictwitter.utils.ReferencedSwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:referencedswiperefreshlayout="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    referencedswiperefreshlayout:adapter_view="@+id/lvTweets"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -26,4 +29,4 @@
 
     </RelativeLayout>
 
-</android.support.v4.widget.SwipeRefreshLayout>
+</com.codepath.apps.basictwitter.utils.ReferencedSwipeRefreshLayout>
