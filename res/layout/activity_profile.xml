@@ -9,10 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" 
-        android:background="@android:drawable/screen_background_light">
-
-
+        android:layout_alignParentTop="true"
+        android:background="@android:drawable/screen_background_light" >
 
         <ImageView
             android:id="@+id/ivProfile"
@@ -30,6 +28,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="@string/default_user_name"
+            android:textStyle="bold"
             android:textSize="16sp" />
 
         <TextView
@@ -40,33 +39,64 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="@string/default_user"
-            android:textSize="16sp" />
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:textSize="13sp" />
     </RelativeLayout>
-
+    
+	<TextView 
+	    android:layout_width="fill_parent"
+		android:layout_height="1dp"
+		android:layout_below="@+id/rlHeader"
+		android:background="#82858a"/>
+	
     <LinearLayout
         android:id="@+id/llCounts"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rlHeader"
         android:layout_marginBottom="10dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        android:weightSum="3" >
+
+        <TextView
+            android:id="@+id/tvTweets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:text="50 Tweets"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvFollowers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:text="5 Followers"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvFollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"         
+            android:layout_weight="1"
             android:text="5 Following"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </LinearLayout>
-
+    
+	<TextView 
+	    android:layout_width="fill_parent"
+		android:layout_height="1dp"
+		android:layout_below="@+id/llCounts"
+		android:background="#82858a"/>
+	
     <fragment
         android:id="@+id/fragmentUserTimeline"
         android:name="com.codepath.apps.basictwitter.fragments.UserTimeLineFragment"

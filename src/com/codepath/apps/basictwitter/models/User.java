@@ -17,6 +17,7 @@ public class User implements Serializable {
 	private String tagline;
 	private int followerCount;
 	private int followingCount;
+	private int tweetCount;
 
 	public String getTagline() {
 		return tagline;
@@ -40,13 +41,18 @@ public class User implements Serializable {
 			user.profileBackgroundImageUrl = json.getString("profile_background_image_url");
 			user.tagline = json.getString("description");
 			user.followerCount = json.getInt("followers_count");
-			user.followerCount = json.getInt("friends_count");		
+			user.followerCount = json.getInt("friends_count");	
+			user.tweetCount = json.getInt("statuses_count");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
 		return user;
+	}
+
+	public int getTweetCount() {
+		return tweetCount;
 	}
 
 	public String getName() {

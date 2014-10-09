@@ -40,13 +40,15 @@ public class ProfileActivity extends FragmentActivity {
 		TextView tvTagline = (TextView) findViewById(R.id.tvTagline);
 		TextView tvFollowers = (TextView) findViewById(R.id.tvFollowers);
 		TextView tvFollowing = (TextView) findViewById(R.id.tvFollowing);
+		TextView tvTweets = (TextView) findViewById(R.id.tvTweets);
 		ImageView ivProfile = (ImageView) findViewById(R.id.ivProfile);
 //		ImageView ivBackground = (ImageView) findViewById(R.id.ivBanner);
 		
 		tvName.setText(profileUser.getName());
 		tvTagline.setText(profileUser.getTagline());
-		tvFollowers.setText(profileUser.getFollowerCount() + " Followers");
-		tvFollowing.setText(profileUser.getFollowingCount() + " Following");
+		tvTweets.setText(profileUser.getTweetCount() + " TWEETS");
+		tvFollowers.setText(profileUser.getFollowerCount() + " FOLLOWERS");
+		tvFollowing.setText(profileUser.getFollowingCount() + " FOLLOWING");
 		ImageLoader.getInstance().displayImage(profileUser.getProfileImageUrl(), ivProfile);
 //		ImageLoader.getInstance().displayImage(profileUser.getProfileBackgroundImageUrl(), ivBackground);		
 	}
