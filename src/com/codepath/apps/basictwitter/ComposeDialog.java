@@ -64,7 +64,6 @@ public class ComposeDialog extends DialogFragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String tweet = mEditText.getText().toString();
-				Toast.makeText(getActivity(), tweet, Toast.LENGTH_SHORT).show();
 				((ComposeDialogListner)getActivity()).onFinishCompose(tweet);
 				dismiss();
 			}
@@ -84,7 +83,6 @@ public class ComposeDialog extends DialogFragment {
 	}
 	
 	public void onClickCancel(View v) {
-		Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
 		dismiss();
 	}
 }

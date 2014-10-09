@@ -38,7 +38,6 @@ public class ProfileActivity extends FragmentActivity {
 		
 		UserTimeLineFragment fg = (UserTimeLineFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentUserTimeline);
 		fg.populateTimeline(profileUser.getUid());
-		Toast.makeText(this, profileUser.getScreenName(), Toast.LENGTH_SHORT).show();
 	}
 	private void populateProfileHeader() {
 		TextView tvName = (TextView) findViewById(R.id.tvName);
