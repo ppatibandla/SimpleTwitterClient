@@ -33,12 +33,12 @@ public class TweetsListFragment extends Fragment implements
 	private TweetArrayAdapter atweets;
 	private ListView lvTweets;
 	private SwipeRefreshLayout swipeContainer;
-	private ProgressBar pbTweetList;
+	private ProgressBar pbTweetList = null;
 
 	// Subclass should override these to implement Endless scrolling and refresh
-	public  void onScrollListner() {};
-	public  void onRefreshListner() {};
-
+	public  boolean onScrollListner() {return false; };
+	public  boolean onRefreshListner() {return false;};
+	public	void populateList() {};
 
 	private final int lvTweetsVisibilityThreshold = 10;
 
@@ -59,13 +59,15 @@ public class TweetsListFragment extends Fragment implements
 		pbTweetList = (ProgressBar) v.findViewById(R.id.pbTweetList);
 		lvTweets = (ListView) v.findViewById(R.id.lvTweets);
 		lvTweets.setAdapter(atweets);
+		populateList();
 		
 		lvTweets.setOnScrollListener(new EndlessScrollListener(
 				lvTweetsVisibilityThreshold) {
 			@Override
 			public void onLoadMore(int page, int totalItemsCount) {
-				showProgressBar();
-				onScrollListner();
+				if (onScrollListner()) {
+					showProgressBar();
+				}
 			}
 
 		});
@@ -77,7 +79,9 @@ public class TweetsListFragment extends Fragment implements
 				// Your code to refresh the list here.
 				// Make sure you call swipeContainer.setRefreshing(false)
 				// once the network request has completed successfully.
-				onRefreshListner();
+				if (! onRefreshListner()) {
+					noteRefreshDone();
+				}
 			}
 		});
 		
@@ -115,7 +119,12 @@ public class TweetsListFragment extends Fragment implements
     
     // Should be called when an async task has finished
     public void hideProgressBar() {
-    	pbTweetList.setVisibility(ProgressBar.INVISIBLE);
+    	/* Fetching data could finish before we inflate view, in that case
+    	 * don't try to access progress bar.
+    	 */
+    	if (pbTweetList != null) {
+    		pbTweetList.setVisibility(ProgressBar.INVISIBLE);
+    	}
     }
     
 	@Override

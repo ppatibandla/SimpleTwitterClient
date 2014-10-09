@@ -14,30 +14,26 @@ public class Tweet {
 	private long uid;
 	private String cretedAt;
 	private User user;
-	public static final long INVALID_ID = -1;
-	public static long max_id = INVALID_ID;
-	public static long since_id = INVALID_ID;
-
+	private boolean retweeted;
+	
 	public static Tweet fromJson(JSONObject json) {
 		Tweet tweet = new Tweet();
 		try {
 			tweet.body = json.getString("text");
 			tweet.uid = json.getLong("id");
 			tweet.cretedAt = json.getString("created_at");
+			tweet.retweeted = json.getBoolean("retweeted");
 			tweet.user = User.fromJson(json.getJSONObject("user"));
-			Log.d("Tweet", String.valueOf(tweet.uid));
-			if ((Tweet.max_id > tweet.uid) || (Tweet.max_id == Tweet.INVALID_ID)) {
-				Tweet.max_id = tweet.uid;
-			}
-			if ((Tweet.since_id < tweet.uid) || (Tweet.since_id == Tweet.INVALID_ID)) {
-				Tweet.since_id = tweet.uid;
-			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
 		return tweet;
+	}
+
+	public boolean isRetweeted() {
+		return retweeted;
 	}
 
 	public String getBody() {

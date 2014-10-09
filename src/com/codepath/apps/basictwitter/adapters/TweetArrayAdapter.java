@@ -29,6 +29,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		TextView tvBody;
 		TextView tvTimeStamp;
 		TextView tvUserId;
+		TextView tvRetweet;
 	}
 	
 	public interface OnTweetClickListener {
@@ -58,7 +59,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 			vh.tvBody = (TextView) v.findViewById(R.id.tvBody);
 			vh.tvTimeStamp = (TextView) v.findViewById(R.id.tvTimeStamp);
 			vh.tvUserId = (TextView) v.findViewById(R.id.tvUserId);
-			
+			vh.tvRetweet = (TextView) v.findViewById(R.id.tvRetweet);
 			v.setTag(vh);
 		} else {
 			v = convertView;
@@ -84,6 +85,12 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		vh.tvBody.setText(tweet.getBody());
 		vh.tvTimeStamp.setText(Utils.getRelativeTimeAgo(tweet.getCretedAt()));
 		vh.tvUserId.setText("@" + tweet.getUser().getScreenName());
+		if (tweet.isRetweeted()) {
+			vh.tvRetweet.setText(tweet.getUser().getName() + " retweeted");
+			vh.tvRetweet.setVisibility(View.VISIBLE);
+		} else {
+			vh.tvRetweet.setVisibility(View.INVISIBLE);		
+		}
 		return v;
 		
 	}

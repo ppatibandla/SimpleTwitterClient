@@ -3,6 +3,8 @@ package com.codepath.apps.basictwitter.activities;
 import org.json.JSONObject;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -104,18 +106,17 @@ public class TimeLineActivity extends ActionBarActivity implements
 		Tab tab1 = actionBar
 		    .newTab()
 		    .setText("Home")
-		    .setIcon(R.drawable.ic_home)
+//		    .setIcon(R.drawable.ic_home_blue)
 		    .setTag("HomeTimelineFragment")
 		    .setTabListener(new SupportFragmentTabListener<HomeTimeLineFragment>(R.id.flContainer, this,
                         "HomeTimelineFragment", HomeTimeLineFragment.class));
-
 		actionBar.addTab(tab1);
 		actionBar.selectTab(tab1);
 
 		Tab tab2 = actionBar
 		    .newTab()
 		    .setText("Mentions")
-		    .setIcon(R.drawable.ic_mentions)
+//		    .setIcon(R.drawable.ic_mentions)
 		    .setTag("MentionsTimelineFragment")
 		    .setTabListener(new SupportFragmentTabListener<MentionsTimeLineFragment>(R.id.flContainer, this,
                         "MentionsTimelineFragment", MentionsTimeLineFragment.class));

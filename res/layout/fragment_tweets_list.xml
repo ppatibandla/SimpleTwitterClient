@@ -17,10 +17,11 @@
 
         <ProgressBar
             android:id="@+id/pbTweetList"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:visibility="invisible"
+            android:background="@android:color/white"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>

@@ -24,15 +24,15 @@ public class Utils {
 				diff = 0;
 			}
 			if (diff > DateUtils.WEEK_IN_MILLIS) {
-				relativeTime = String.valueOf(((int) diff / DateUtils.WEEK_IN_MILLIS)) + " w";
+				relativeTime = String.valueOf(((int) diff / DateUtils.WEEK_IN_MILLIS)) + "w";
 			} else if (diff > DateUtils.DAY_IN_MILLIS) {
-				relativeTime = String.valueOf(((int) diff / DateUtils.DAY_IN_MILLIS)) + " d";
+				relativeTime = String.valueOf(((int) diff / DateUtils.DAY_IN_MILLIS)) + "d";
 			} else if (diff > DateUtils.HOUR_IN_MILLIS) {
-				relativeTime = String.valueOf(((int) diff / DateUtils.HOUR_IN_MILLIS)) + " h";
+				relativeTime = String.valueOf(((int) diff / DateUtils.HOUR_IN_MILLIS)) + "h";
 			} else if (diff > DateUtils.MINUTE_IN_MILLIS) {
-				relativeTime = String.valueOf(((int) diff / DateUtils.MINUTE_IN_MILLIS)) + " m";
+				relativeTime = String.valueOf(((int) diff / DateUtils.MINUTE_IN_MILLIS)) + "m";
 			} else {
-				relativeTime = String.valueOf(((int) diff / DateUtils.SECOND_IN_MILLIS)) + " s";
+				relativeTime = String.valueOf(((int) diff / DateUtils.SECOND_IN_MILLIS)) + "s";
 			}
 		} catch (java.text.ParseException e) {
 			e.printStackTrace();
